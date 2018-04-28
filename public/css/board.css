@@ -1,0 +1,72 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:400,700);
+body
+{
+    font-family: 'Lato', 'sans-serif';
+    }
+.profile
+{
+    min-height: 355px;
+    display: inline-block;
+    }
+figcaption.ratings
+{
+    margin-top:20px;
+    }
+figcaption.ratings a
+{
+    color:#f1c40f;
+    font-size:11px;
+    }
+figcaption.ratings a:hover
+{
+    color:#f39c12;
+    text-decoration:none;
+    }
+.divider
+{
+    border-top:1px solid rgba(0,0,0,0.1);
+    }
+.emphasis
+{
+    border-top: 4px solid transparent;
+    }
+.emphasis:hover
+{
+    border-top: 4px solid #1abc9c;
+    }
+.emphasis h2
+{
+    margin-bottom:0;
+    }
+span.tags
+{
+    background: #1abc9c;
+    border-radius: 2px;
+    color: #f5f5f5;
+    font-weight: bold;
+    padding: 2px 4px;
+    }
+
+#boardUsername {
+  color: white;
+  font-size: 1.2em;
+}
+
+#mainNav {
+background-color: #181a1d !important;
+}
+
+#profilePlugin {
+  padding-top: 20px;
+}
+#clock {
+  color: rgba(255,255,255,.75);
+}
+
+#avatarImage{
+  width: 60%;
+  height: auto;
+}
+.card {
+  background-color: #e9ecef;
+}
