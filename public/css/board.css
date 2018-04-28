@@ -58,6 +58,8 @@ background-color: #181a1d !important;
 
 #profilePlugin {
   padding-top: 20px;
+  min-height: 0 !important;
+  padding-bottom: 20px !important;
 }
 #clock {
   color: rgba(255,255,255,.75);

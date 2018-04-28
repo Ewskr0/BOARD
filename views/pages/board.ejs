@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <section class="jumbotron text-center">
       <div class="container">
-        <h1 class="jumbotron-heading font-weight-bold">Bienvenue <%= user.firstname %> sur ton Board</h1>
+        <h1 class="jumbotron-heading font-weight-bold">Bienvenue <%= user.username %> sur ton Board</h1>
         <p class="lead">Comme tu peux le constater, tout n'est pas encore fini !</p>
       </div>
     </section>
@@ -23,7 +23,7 @@
                      <div class="col-sm-12">
                        <div class="row">
                          <div class="col-sm-6">
-                           <h2><%= user.username %></h2>
+                           <h2><%= user.firstname+" "+user.lastname %>  </h2>
                            <p><strong>Email: </strong><%= user.email %></p>
                            <p><strong>About: </strong><%= user.about %></p>
                            <p><strong>Hobbies: </strong><%= user.hobbies %></p>
@@ -35,7 +35,11 @@
                          <div class="col-sm-6 text-center">
                            <img src="/assets/images/avatarBoy.png" class="mx-auto" id="avatarImage">
                          </div>
-
+                       </div>
+                       <div class="row -sm-12">
+                         <div class="col-sm-6">
+                           <a href="/board/profile" class="btn btn-danger  btn-smfont-weight-bold ">Paramètres</a>
+                         </div>
                        </div>
 
                     <!--     <div class="col-xs-12 col-sm-4 text-center">
