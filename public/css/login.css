@@ -4,10 +4,15 @@ body {
   width: 100%;
 }
 
-body {
-
+.navbar-dark .navbar-nav .nav-link{
+  color: white;
 }
-
+.blur{
+  background-color: none;
+}
+.text-black{
+  color: #212529;
+}
 .form-signin {
   width: 100%;
   max-width: 330px;

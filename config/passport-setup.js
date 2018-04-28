@@ -23,7 +23,6 @@ passport.use(
     session: false
   },
  (email, password, done) => {
-    console.log('email '+email)
     User.findOne({email:email}).then( (user, err) => {
             if (err) {
                 return done(err);
@@ -48,9 +47,7 @@ passport.use(
     //check if user exists
     User.findOne({googleid:profile.id}).then((currentUser) => {
       if(currentUser){
-        console.log('user is ' + currentUser)
         done(null, currentUser)
-
       }else{
 
         new User({

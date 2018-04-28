@@ -10,10 +10,17 @@ router.use(bodyParser.json())
 
 //auth login
 router.get('/login', (req, res) => {
-  res.render('pages/auth/login',{msg: ""})
+  res.render('pages/auth/login',{success:"", error: ""})
 })
 
-router.post('/login', passport.authenticate('local', {failureRedirect: '/auth/login'}), function (req, res) {
+router.get('/login/failure', (req, res) => {
+  res.render('pages/auth/login',{success:'', error: "Email ou mot de passe incorrect"})
+})
+
+router.post('/login', passport.authenticate('local', {failureRedirect: '/auth/login/failure'}), function (req, res) {
+  res.redirect('/board')
+})
+router.post('/login/failure', passport.authenticate('local', {failureRedirect: '/auth/login/failure'}), function (req, res) {
   res.redirect('/board')
 })
 
@@ -70,7 +77,7 @@ else{
 
                         }).save().then((newUser) => {
                           console.log('new user created ' + newUser)
-                          res.render("/auth/login", {msg: "le compte a bien été crée"})
+                          res.render("pages/auth/login", {success: "le compte a bien été crée", error:''})
                         })
               }
             })

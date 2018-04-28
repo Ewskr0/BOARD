@@ -12,44 +12,59 @@
   <body class="text-center">
     <% include nav %>
 
-<div class="container">
-  <form class="mt-5 pt-5 form-signin" method="POST">
-    <i class="fas fa-sign-in-alt fa-7x"></i>
-    <h1 class="h3 mb-3 font-weight-normal">Login</h1>
-
-    <label for="inputEmail" class="sr-only">Email address</label>
-    <input type="email"name="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
-
-    <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required="">
-
-    <!--
-    <div class="checkbox mb-3">
-      <label>
-        <input type="checkbox" value="remember-me"> Remember me
-      </label>
-    </div>
-  -->
-
-    <button class="btn btn-lg btn-dark btn-block" type="submit">Se connecter</button>
-    <a class="btn btn-lg btn-warning btn-block" href="/auth/google" role="button">
-      <i class="fab fa-google-plus-g"></i>
-    </a>
-    <div class="mt-2 mb-3">
-      <a class="mt-3 mb-3 text-muted" href="/auth/register">Creer un compte</a>
-    </div>
-    <% if (msg) { %>
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="alert alert-success" role="alert">
-        <strong><%= msg %></strong>
+<div class="container justify-content-md-center col-md-5">
+  <div class="blur">
+    <form class="mt-5 form-signin" method="POST">
+      <i class="fas fa-sign-in-alt fa-7x"></i>
+      <h1 class="h3 mb-3 font-weight-bold">Login</h1>
+      <div class="row">
+        <div class="form-group col-lg-12 font-weight-bold">
+          <label>Email</label>
+          <input type="email"name="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+        </div>
       </div>
+      <div class="row">
+        <div class="form-group col-lg-12 font-weight-bold">
+          <label>Mot de passe</label>
+          <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+        </div>
       </div>
-    </div>
-    <% } %>
+      <!--
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div>
+    -->
 
-  </form>
-  <p class="mt-5 mb-3 text-muted">© Ewann Pellé</p>
+      <button class="btn btn-lg btn-dark btn-block" type="submit">Se connecter</button>
+      <a class="btn btn-lg btn-warning btn-block" href="/auth/google" role="button">
+        <i class="fab fa-google-plus-g"></i>
+      </a>
+      <div class="mt-2 mb-3">
+        <a class="mt-3 mb-3 text-black font-weight-bold" href="/auth/register">Creer un compte</a>
+      </div>
+      <% if (success) { %>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="alert alert-success" role="alert">
+          <strong><%= success %></strong>
+        </div>
+        </div>
+      </div>
+      <% } %>
+      <% if (error) { %>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="alert alert-danger" role="alert">
+          <strong>Erreur: </strong><%= error %>
+        </div>
+        </div>
+      </div>
+      <% } %>
+
+    </form>
+  </div>
 
 </div>
 
