@@ -3,15 +3,23 @@ body {
   height: 100%;
   width: 100%;
 }
-
+.backgroundImg{
+  background-image: url(/assets/images/desk.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .navbar-dark .navbar-nav .nav-link{
-  color: white;
+  color: white
 }
 .blur{
-  background-color: none;
+  background-color: #64646899;
 }
 .text-black{
   color: #212529;
+}
+.text-white{
+  color: white;
 }
 .form-signin {
   width: 100%;
@@ -42,7 +50,18 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
-
+.titleh1{
+  font-size: 4em;
+}
+.titleh2{
+  font-size: 2em;
+}
+.titlebutton{
+  font-size: 1.2em;
+}
 #mainNav {
 background-color: #181a1d !important;
+}
+#indexTitle{
+  margin-top: 10%;
 }
