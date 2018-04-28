@@ -3,6 +3,8 @@ let googleStrategy = require('passport-google-oauth20')
 let LocalStrategy = require('passport-local')
 let keys = require('./keys')
 let User = require('../models/user')
+let sha1 = require('sha1')
+
 
 passport.serializeUser((user, done) => {
   done(null, user.id)
@@ -15,9 +17,14 @@ passport.deserializeUser((id, done) => {
 })
 
 passport.use(
-  new LocalStrategy(function (email, password, done) {
-    models.User.findOne({where: {email: email}})
-        .then(function (user, err) {
+  new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password',
+    session: false
+  },
+ (email, password, done) => {
+    console.log('email '+email)
+    User.findOne({email:email}).then( (user, err) => {
             if (err) {
                 return done(err);
             }
@@ -25,11 +32,11 @@ passport.use(
                 return done(null, false);
             }
             if (user.password !== sha1(password)) {
-                return done(null, false);
+                return done(null, false)
             }
-            return done(null, user);
-        });
-}));
+            return done(null, user)
+        })
+}))
 passport.use(
   new googleStrategy({
     //options for google strat
@@ -39,7 +46,6 @@ passport.use(
 
   }, (accesToken, refreshToken, profile, done) => {
     //check if user exists
-    console.log(profile)
     User.findOne({googleid:profile.id}).then((currentUser) => {
       if(currentUser){
         console.log('user is ' + currentUser)
@@ -51,9 +57,10 @@ passport.use(
           firstname: profile.name.givenName,
           lastname: profile.name.familyName,
           email: "",
+          password: "",
           about:"",
           hobbies: "",
-          skills: [''],
+          skills: ['none'],
           soundcloud: "",
           avatarurl:profile._json.image.url,
           username: profile.displayName,

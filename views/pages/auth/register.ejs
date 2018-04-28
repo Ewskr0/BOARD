@@ -14,41 +14,64 @@
         <div class="container mt-5 pt-5 justify-content-md-center col-md-5 ">
           <i class="fas fa-user-plus fa-7x"></i>
           <h1 class="mt-3 h3 mb-3 font-weight-normal">Inscription</h1>
+          <form class="" method="post">
+            <div class="row">
+              <div class="form-group col-lg-12">
+                <label>Nom d'utilisateur</label>
+                <input type="text"name="username" pattern=".{3,}"  id="username" class="form-control" placeholder="Username" required="" autofocus="">
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-lg-6">
+                <label>Nom</label>
+                <input type="text"name="lastname" pattern=".{3,}"  id="lastname" class="form-control" placeholder="Nom" required="" autofocus="">
+              </div>
+
+              <div class="form-group col-lg-6">
+                <label>Prénom</label>
+                <input type="text" name="firstname" pattern=".{3,}" id="firstname" class="form-control" placeholder="Prénom" required="" autofocus="">
+              </div>
+          </div>
+            <div class="row">
+              <div class="form-group col-lg-6">
+                <label>Mot de Passe</label>
+                <input type="password" name="password" pattern=".{8,}" id="password" class="form-control" placeholder="Mot de Passe" required="" autofocus="">
+              </div>
+
+              <div class="form-group col-lg-6">
+                <label>Répéter le mot de Passe</label>
+                <input type="password" name="password2" pattern=".{8,}" id="password2" class="form-control" placeholder="Password" required="" autofocus="">
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-lg-6">
+                <label>Adresse email</label>
+                <input type="email"name="email" id="email" class="form-control" placeholder="Email" required="" autofocus="">
+              </div>
+
+              <div class="form-group col-lg-6">
+                <label>Répéter l'adresser email</label>
+                <input type="email" name="email2" id="email2" class="form-control" placeholder="Email" required="" autofocus="">
+              </div>
+          </div>
+          <% if (error) { %>
           <div class="row">
-            <div class="form-group col-lg-12">
-              <label>Username</label>
-              <input type="text" pattern=".{3,}"  id="username" class="form-control" placeholder="Username" required="" autofocus="">
+            <div class="col-lg-12">
+              <div class="alert alert-danger" role="alert">
+              <strong>Erreur :</strong> <%= error %>
+            </div>
             </div>
           </div>
-          <div class="row">
-            <div class="form-group col-lg-6">
-    					<label>Password</label>
-    					<input type="password" pattern=".{8,}" id="passport" class="form-control" placeholder="Password" required="" autofocus="">
-    				</div>
+          <% } %>
+          <div class="row justify-content-md-center">
+            <div class="col-6">
+              <button class="btn btn-lg btn-dark btn-block" type="submit">Valider</button>
 
-    				<div class="form-group col-lg-6">
-    					<label>Repeat Password</label>
-              <input type="password" pattern=".{8,}" id="passport2" class="form-control" placeholder="Password" required="" autofocus="">
-    				</div>
+            </div>
           </div>
-          <div class="row">
-            <div class="form-group col-lg-6">
-    					<label>Email Address</label>
-              <input type="email" id="email" class="form-control" placeholder="Email" required="" autofocus="">
-    				</div>
-
-    				<div class="form-group col-lg-6">
-    					<label>Repeat Email Address</label>
-              <input type="email" id="email2" class="form-control" placeholder="Email" required="" autofocus="">
-    				</div>
-        </div>
-        <div class="row justify-content-md-center">
-          <div class="col-6">
-            <button class="btn btn-lg btn-dark btn-block" type="submit">Valider</button>
-
-          </div>
-        </div>
+          </form>
 
 
+      </div>
 </body>
 </html>

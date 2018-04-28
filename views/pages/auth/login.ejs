@@ -13,15 +13,15 @@
     <% include nav %>
 
 <div class="container">
-  <form class="mt-5 pt-5 form-signin">
+  <form class="mt-5 pt-5 form-signin" method="POST">
     <i class="fas fa-sign-in-alt fa-7x"></i>
     <h1 class="h3 mb-3 font-weight-normal">Login</h1>
 
     <label for="inputEmail" class="sr-only">Email address</label>
-    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+    <input type="email"name="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
 
     <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required="">
 
     <!--
     <div class="checkbox mb-3">
@@ -38,6 +38,15 @@
     <div class="mt-2 mb-3">
       <a class="mt-3 mb-3 text-muted" href="/auth/register">Creer un compte</a>
     </div>
+    <% if (msg) { %>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="alert alert-success" role="alert">
+        <strong><%= msg %></strong>
+      </div>
+      </div>
+    </div>
+    <% } %>
 
   </form>
   <p class="mt-5 mb-3 text-muted">© Ewann Pellé</p>
