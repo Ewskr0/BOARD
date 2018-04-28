@@ -67,6 +67,9 @@ background-color: #181a1d !important;
   width: 60%;
   height: auto;
 }
+#registerContainer{
+  height: 100%;
+}
 .card {
   background-color: #e9ecef;
 }

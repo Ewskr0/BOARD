@@ -1,5 +1,6 @@
 let passport = require('passport')
 let googleStrategy = require('passport-google-oauth20')
+let LocalStrategy = require('passport-local')
 let keys = require('./keys')
 let User = require('../models/user')
 
@@ -13,6 +14,22 @@ passport.deserializeUser((id, done) => {
   })
 })
 
+passport.use(
+  new LocalStrategy(function (email, password, done) {
+    models.User.findOne({where: {email: email}})
+        .then(function (user, err) {
+            if (err) {
+                return done(err);
+            }
+            if (!user) {
+                return done(null, false);
+            }
+            if (user.password !== sha1(password)) {
+                return done(null, false);
+            }
+            return done(null, user);
+        });
+}));
 passport.use(
   new googleStrategy({
     //options for google strat
