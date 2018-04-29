@@ -58,8 +58,6 @@ router.post('/register', (req, res) => {
       error = 'le prénom est incorrect'
   } else if (user.password !== user.password2 || user.password.length < 8) {
       error = 'les mots de passe ne correspondent pas'
-  } else if (user.password !== user.password2 || user.password.length < 8) {
-      error = 'les mots de passe ne correspondent pas'
   } else if (user.email !== user.email2 || !user.email.match(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i)) {
       error: 'les mots de passe ne correspondent pas'
   } else {
@@ -77,7 +75,7 @@ router.post('/register', (req, res) => {
           password: sha1(user.password),
           about: "",
           hobbies: "",
-          skills: ['none'],
+          skills: [''],
           soundcloud: "",
           avatarurl: "/assets/images/avatarBoy.png",
           username: user.username,

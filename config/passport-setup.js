@@ -57,7 +57,7 @@ passport.use(
           password: "",
           about:"",
           hobbies: "",
-          skills: ['none'],
+          skills: [''],
           soundcloud: "",
           avatarurl:profile._json.image.url,
           username: profile.displayName,
