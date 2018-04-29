@@ -45,33 +45,21 @@
                   </div>
                 </div>
                 <div class="row">
-                  <% if(!user.email) { %>
-                    <div class="form-group col-lg-6 font-weight-bold">
-                      <label>Adresse email</label>
-                      <input type="email" name="email" id="email" class="form-control" placeholder="Email" required="" autofocus="">
-                    </div>
+                  <div class="form-group col-lg-6 font-weight-bold">
+                    <label>Adresse email</label>
+                    <input disabled="disabled" type="email" id="email" class="form-control" value="<%= user.email %>" required="" autofocus="">
+                  </div>
 
-                    <div class="form-group col-lg-6 font-weight-bold">
-                      <label>Répéter l'adresser email</label>
-                      <input type="email" name="email2" id="email2" class="form-control" placeholder="Email" required="" autofocus="">
-                    </div>
-                    <% } %>
-                      <% if(user.email) { %>
-                        <div class="form-group col-lg-6 font-weight-bold">
-                          <label>Adresse email</label>
-                          <input disabled="disabled" type="email" id="email" class="form-control" value="<%= user.email %>" required="" autofocus="">
-                        </div>
-                        <% } %>
 
                 </div>
                 <div class="row">
                   <div class="form-group col-lg-6 font-weight-bold">
                     <label>A propos de moi</label>
-                    <textarea type="text" rows="3" name="about" pattern=".{3,}" id="about" class="form-control"  autofocus=""><%= user.about %></textarea>
+                    <textarea type="text" rows="3" name="about" pattern=".{3,}" id="about" class="form-control" autofocus=""><%= user.about %></textarea>
                   </div>
                   <div class="form-group col-lg-6 font-weight-bold">
                     <label>Hobbies</label>
-                    <textarea type="text" rows="3" name="hobbies" pattern=".{3,}" id="Hobbies" class="form-control"autofocus=""><%= user.hobbies %></textarea>
+                    <textarea type="text" rows="3" name="hobbies" pattern=".{3,}" id="Hobbies" class="form-control" autofocus=""><%= user.hobbies %></textarea>
                   </div>
                 </div>
             </div>
@@ -106,27 +94,27 @@
                 </div>
               </form>
               <form name="profileSkill" method="post" class="">
-                  <div class="form-group font-weight-bold col-lg-12">
-                    <div class="row">
-                      <label>Skills</label>
-                    </div>
-                    <div class="row">
-                      <p>
-                        <% if(user.skills) {for (var i = 0; i < user.skills.length; i++) { %>
-                          <span class="tags"><%= user.skills[i] %></span>
-                          <% }} %>
-                        </p>
-                    </div>
-                    <div class="row">
-                      <div class="col-6 pl-0">
-                        <input type="text" name="skill" pattern=".{1,8}" id="username" class="form-control" required="" autofocus="">
-                      </div>
-                      <div class="col-6 pr-0">
-                        <button class="btn btn-success btn-block" type="submit">Ajouter</button>
-                      </div>
-                    </div>
-
+                <div class="form-group font-weight-bold col-lg-12">
+                  <div class="row">
+                    <label>Skills</label>
                   </div>
+                  <div class="row">
+                    <p>
+                      <% if(user.skills) {for (var i = 0; i < user.skills.length; i++) { %>
+                        <span class="tags"><%= user.skills[i] %></span>
+                        <% }} %>
+                    </p>
+                  </div>
+                  <div class="row">
+                    <div class="col-6 pl-0">
+                      <input type="text" name="skill" pattern=".{1,8}" id="username" class="form-control" required="" autofocus="">
+                    </div>
+                    <div class="col-6 pr-0">
+                      <button class="btn btn-success btn-block" type="submit">Ajouter</button>
+                    </div>
+                  </div>
+
+                </div>
               </form>
             </div>
           </div>
