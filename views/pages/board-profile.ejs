@@ -112,9 +112,9 @@
                     </div>
                     <div class="row">
                       <p>
-                        <% for (var i = 0; i < user.skills.length; i++) { %>
+                        <% if(user.skills) {for (var i = 0; i < user.skills.length; i++) { %>
                           <span class="tags"><%= user.skills[i] %></span>
-                          <% } %>
+                          <% }} %>
                         </p>
                     </div>
                     <div class="row">

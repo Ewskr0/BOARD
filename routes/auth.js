@@ -51,52 +51,57 @@ router.post('/register', (req, res) => {
       error: 'Formulaire incorrect'
     })
   } else if (user.username.length < 2 || !/^[a-zA-Z0-9]+([a-zA-Z0-9](_|-| )[a-zA-Z0-9])*[a-zA-Z0-9]*$/.test(user.username)) {
-      error = 'le nom d\'utilsateur est incorrect'
+    error = 'le nom d\'utilsateur est incorrect'
   } else if (user.lastname.length < 2 || !/^[a-zA-Z0-9]+([a-zA-Z0-9](_|-| )[a-zA-Z0-9])*[a-zA-Z0-9]*$/.test(user.lastname)) {
-      error = 'le nom  est incorrect'
+    error = 'le nom  est incorrect'
   } else if (user.firstname.length < 2 || !/^[a-zA-Z0-9]+([a-zA-Z0-9](_|-| )[a-zA-Z0-9])*[a-zA-Z0-9]*$/.test(user.firstname)) {
-      error = 'le prénom est incorrect'
+    error = 'le prénom est incorrect'
   } else if (user.password !== user.password2 || user.password.length < 8) {
-      error = 'les mots de passe ne correspondent pas'
+    error = 'les mots de passe ne correspondent pas'
   } else if (user.email !== user.email2 || !user.email.match(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i)) {
-      error: 'les mots de passe ne correspondent pas'
+    error = 'les emails ne correspondent pas'
   } else {
-    User.findOne({
-      email: user.email
-    }).then((email) => {
-      if (email) {
+    if (error != '') {
+      res.render("pages/auth/register", {
+        success: "",
+        error: error
+      })
+    } else {
+      User.findOne({
+        email: user.email
+      }).then((userfind) => {
+        if (userfind) {
           error = 'Email non disponible'
-      } else {
+          res.render("pages/auth/register", {
+            success: "",
+            error: error
+          })
+        } else {
 
-        new User({
-          firstname: user.firstname,
-          lastname: user.lastname,
-          email: user.email,
-          password: sha1(user.password),
-          about: "",
-          hobbies: "",
-          skills: [''],
-          soundcloud: "",
-          avatarurl: "/assets/images/avatarBoy.png",
-          username: user.username,
-          googleid: "",
+          new User({
+            firstname: user.firstname,
+            lastname: user.lastname,
+            email: user.email,
+            password: sha1(user.password),
+            about: "",
+            hobbies: "",
+            skills: [],
+            soundcloud: "",
+            avatarurl: "/assets/images/avatarBoy.png",
+            username: user.username,
+            googleid: "",
 
-        }).save().then((newUser) => {
-          console.log('new user created ' + newUser)
-
-
-        })
-
-
-      }
-    })
+          }).save().then((newUser) => {
+            console.log('new user created ' + newUser)
+            res.render("pages/auth/login", {
+              success: "Compte crée",
+              error: error
+            })
+          })
+        }
+      })
+    }
   }
-
-  res.render("pages/auth/register", {
-    success: "",
-    error: error
-  })
-
 })
 
 

@@ -40,6 +40,7 @@ router.post('/profile', (req, res) => {
 
       //skills
       if (req.body.skill) {
+        req.body.skill = req.body.skill.toUpperCase()
         req.user.skills.push(req.body.skill)
         User.update({
           email: req.user.email
