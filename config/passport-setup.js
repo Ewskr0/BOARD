@@ -45,7 +45,6 @@ passport.use(
 
   }, (accesToken, refreshToken, profile, done) => {
     //check if user exists
-    console.log(profile)
     User.findOne({googleid:profile.id}).then((currentUser) => {
       if(currentUser){
         done(null, currentUser)
