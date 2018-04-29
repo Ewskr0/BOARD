@@ -10,17 +10,131 @@
       </ol>
       <!-- Area Chart Example-->
       <div class="row">
-      <div class="col-6">
-        <div class="card mb-3">
-          <div class="card-header">
-            <i class="fa fa-user"></i> Account</div>
-          <div class="card-body">
+        <div class="col-8">
+          <div class="card mb-3 pb-3">
+            <div class="card-header">
+              <i class="fa fa-user"></i> Edit Profile</div>
+            <div class="card-body">
+              <form name="profileInfo" method="post">
+                <div class="row">
+                  <div class="form-group col-lg-12 font-weight-bold">
+                    <label>Nom d'utilisateur</label>
+                    <input type="text" name="username" pattern=".{3,}" id="username" class="form-control" value="<%= user.username %>" required="" autofocus="">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group col-lg-6 font-weight-bold">
+                    <label>Nom</label>
+                    <input disabled="disabled" type="text" pattern=".{3,}" id="lastname" class="form-control" value="<%= user.lastname %>" required="" autofocus="">
+                  </div>
 
+                  <div class="form-group col-lg-6 font-weight-bold">
+                    <label>Prénom</label>
+                    <input disabled="disabled" type="text" pattern=".{3,}" id="firstname" class="form-control" value="<%= user.firstname %>" required="" autofocus="">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group col-lg-6 font-weight-bold">
+                    <label>Mot de Passe</label>
+                    <input type="password" name="password" pattern=".{8,}" id="password" class="form-control" placeholder="Mot de Passe" autofocus="">
+                  </div>
+
+                  <div class="form-group col-lg-6 font-weight-bold">
+                    <label>Répéter le mot de Passe</label>
+                    <input type="password" name="password2" pattern=".{8,}" id="password2" class="form-control" placeholder="Mot de Passe" autofocus="">
+                  </div>
+                </div>
+                <div class="row">
+                  <% if(!user.email) { %>
+                    <div class="form-group col-lg-6 font-weight-bold">
+                      <label>Adresse email</label>
+                      <input type="email" name="email" id="email" class="form-control" placeholder="Email" required="" autofocus="">
+                    </div>
+
+                    <div class="form-group col-lg-6 font-weight-bold">
+                      <label>Répéter l'adresser email</label>
+                      <input type="email" name="email2" id="email2" class="form-control" placeholder="Email" required="" autofocus="">
+                    </div>
+                    <% } %>
+                      <% if(user.email) { %>
+                        <div class="form-group col-lg-6 font-weight-bold">
+                          <label>Adresse email</label>
+                          <input disabled="disabled" type="email" id="email" class="form-control" value="<%= user.email %>" required="" autofocus="">
+                        </div>
+                        <% } %>
+
+                </div>
+                <div class="row">
+                  <div class="form-group col-lg-6 font-weight-bold">
+                    <label>A propos de moi</label>
+                    <textarea type="text" rows="3" name="about" pattern=".{3,}" id="username" class="form-control" value="<%= user.about %>" autofocus=""></textarea>
+                  </div>
+                  <div class="form-group col-lg-6 font-weight-bold">
+                    <label>Hobbies</label>
+                    <textarea type="text" rows="3" name="about" pattern=".{3,}" id="username" class="form-control" value="<%= user.hobbies %>" autofocus=""></textarea>
+                  </div>
+                </div>
+            </div>
+            <div class="row justify-content-md-center">
+              <div class="col-6">
+                <button class="btn btn-lg btn-dark btn-block" type="submit">Valider</button>
+
+              </div>
+            </div>
+            </form>
           </div>
         </div>
-      </div>
-      </div>
+        <div class="col-4">
+          <div class="card mb-3 pb-3">
+            <div class="card-body">
+              <div class="row justify-content-md-center ">
+                <div class="col-sm-8 text-center">
+                  <img src="<%= user.avatarurl %>" class="mx-auto" id="avatarImage">
+                </div>
+              </div>
+              <form name="profileAvatar" method="post" class="mb-3">
+                <div class="row">
+                  <div class="form-group col-lg-12 font-weight-bold">
+                    <label>URL de l'image</label>
+                    <input type="url" name="url" pattern=".{3,}" id="username" class="form-control" placeholder="<%= user.avatarurl %>" required>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <button class="btn btn-danger btn-block" type="submit">Valider</button>
+                  </div>
+                </div>
+              </form>
+              <form name="profileSkill" method="post" class="">
+                  <div class="form-group font-weight-bold col-lg-12">
+                    <div class="row">
+                      <label>Skills</label>
+                    </div>
+                    <div class="row">
+                      <p>
+                        <% for (var i = 0; i < user.skills.length; i++) { %>
+                          <span class="tags"><%= user.skills[i] %></span>
+                          <% } %>
+                        </p>
+                    </div>
+                    <div class="row">
+                      <div class="col-6 pl-0">
+                        <input type="text" name="skill" pattern=".{1,8}" id="username" class="form-control" required="" autofocus="">
+                      </div>
+                      <div class="col-6 pr-0">
+                        <button class="btn btn-success btn-block" type="submit">Ajouter</button>
+                      </div>
+                    </div>
 
+                  </div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
     </div>
 
-<% include board-footer %>
+  </div>
+
+  <% include board-footer %>

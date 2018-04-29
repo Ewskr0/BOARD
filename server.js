@@ -23,7 +23,7 @@ app.use('/assets', express.static('public'))
 app.use(bodyParser.urlencoded({extended : false}))
 app.use(bodyParser.json())
 app.use(cookieSession({
-  maxAge:24 * 60 * 60 * 1000,
+  maxAge:0.5 * 60 * 60 * 1000,
   keys:[keys.cookieKey.key]
 }))
 app.use(passport.initialize())
