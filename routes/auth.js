@@ -36,6 +36,8 @@ router.post('/login/failure', passport.authenticate('local', {
   res.redirect('/board')
 })
 
+
+
 //auth Register
 router.get('/register', (req, res) => {
   res.render('pages/auth/register', {
@@ -92,11 +94,8 @@ router.post('/register', (req, res) => {
             googleid: "",
 
           }).save().then((newUser) => {
-            console.log('new user created ' + newUser)
-            res.render("pages/auth/login", {
-              success: "Compte crée",
-              error: error
-            })
+            console.log('new ages/auth/user created ' + newUser)
+            res.redirect("auth/login")
           })
         }
       })
