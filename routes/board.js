@@ -98,5 +98,11 @@ router.post('/profile', (req, res) => {
 
       })
 
+      router.get('/social', authCheck, (req, res) => {
+        res.render('pages/board-socialfeed', {
+          user: req.user
+        })
+      })
+
 
     module.exports = router

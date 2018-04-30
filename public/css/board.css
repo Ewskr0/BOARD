@@ -66,11 +66,16 @@ span.tags {
 }
 
 #avatarImage {
-  height: 14em;
-  width:  14em;
+  width: 60%
   border-radius: 50%;
 }
 
+#authorImage {
+  border-radius: 50%;
+}
+img.attachment{
+  max-width: 100%;
+}
 #registerContainer {
   height: 100%;
 }

@@ -1,0 +1,36 @@
+  <div class="card mb-3 pb-3">
+    <div class="card-header">
+      <i class="fa fa-{{=it.social_network}}"></i>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-8">
+          <a  href="{{=it.author_link}}" target="_blank">
+                  <img class="media-object" id="authorImage" src="{{=it.author_picture}}">
+
+              </a>
+              <span class="pl-2 font-weight-bold">{{=it.author_name}}</span>
+
+        </div>
+        <div class="col-4  text-right">
+            <span> {{=it.time_ago}}</span>
+        </div>
+
+      </div>
+      <div class="row mt-3">
+        <div class="col">
+          <p class="social-feed-text">{{=it.text}} <a href="{{=it.link}}" target="_blank" class="read-button">read more</a></p>
+        </div>
+          <div class="social-feed-element {{? !it.moderation_passed}}hidden{{?}}" dt-create="{{=it.dt_create}}" social-feed-id="{{=it.id}}">
+            <div class="social-feed-attachment">
+              {{=it.attachment}}
+            </div>
+          </div>
+        </div>
+        <div class="row">
+
+
+    </div>
+  </div>
+
+</div>

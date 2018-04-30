@@ -1,0 +1,111 @@
+<% include board-header %>
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <div class="container">
+        <section class="card mb-3 pb-3 text-center">
+          <div class="card-body">
+            <h1 class="jumbotron-heading font-weight-bold">Bienvenue <%= user.username %> sur ton Board</h1>
+            <p class="lead">Comme tu peux le constater, tout n'est pas encore fini !</p>
+            <div class="col-4 offset-md-4">
+              <div class="">
+
+              </div>
+              <input type="text" class="form-control" value="@spotify, #spotify" id="query">
+              <button class="btn btn-danger btn-block" id="button-update"><i class="fa fa-refresh"></i>
+                      </button>
+            </div>
+          </div>
+        </section>
+
+        <div class="social-feed-container">
+        </div>
+      </div>
+
+
+
+      <!-- jQuery -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+      <!-- Codebird.js - required for TWITTER -->
+      <script src="/assets/codebird-js/codebird.js"></script>
+      <!-- doT.js for rendering templates -->
+      <script src="/assets/doT/doT.min.js"></script>
+      <!-- Moment.js for showing "time ago" and/or "date"-->
+      <script src="/assets/moment/min/moment.min.js"></script>
+      <!-- Moment Locale to format the date to your language (eg. italian lang)-->
+      <script src="/assets/moment/locale/it.js"></script>
+      <!-- Social-feed js -->
+      <script src="/assets/social-feed/js/jquery.socialfeed.js" type="text/javascript"></script>
+      <script type="text/javascript">
+        (function($) {
+
+    $(document).ready(function() {
+
+        var updateFeed = function() {
+            var initialQuery = $('#query').val()
+            initialQuery = initialQuery.replace(" ", "");
+            var queryTags = initialQuery.split(",");
+            $('.social-feed-container').socialfeed({
+                // FACEBOOK
+                facebook: {
+                    accounts: queryTags,
+                    limit: 10,
+                    access_token: '150849908413827|a20e87978f1ac491a0c4a721c961b68c'
+                },
+                // GOOGLEPLUS
+                google: {
+                    accounts: queryTags,
+                    limit: 10,
+                    access_token: 'AIzaSyDAelFmJhg6BSUbSLe8UT7s-G53tL4_KRg'
+                },
+                // Twitter
+                twitter: {
+                    accounts: queryTags,
+                    limit: 20,
+                    consumer_key: 'qzRXgkI7enflNJH1lWFvujT2P', // make sure to have your app read-only
+                    consumer_secret: '8e7E7gHuTwyDHw9lGQFO73FcUwz9YozT37lEvZulMq8FXaPl8O', // make sure to have your app read-only
+                },
+                // VKONTAKTE
+                vk: {
+                    accounts: queryTags,
+                    limit: 2,
+                    source: 'all'
+                },
+                // INSTAGRAM
+                instagram: {
+                    accounts: queryTags,
+                    limit: 2,
+                    client_id: '88b4730e0e2c4b2f8a09a6184af2e218',
+                    access_token: '601813532.1677ed0.aa9375ef596b43299d16925e45874962'
+                },
+
+                // GENERAL SETTINGS
+                length: 200,
+                show_media: true,
+                template : "/assets/social-feed/template.html",
+                // Moderation function - if returns false, template will have class hidden
+                moderation: function(content) {
+                    return (content.text) ? content.text.indexOf('porn') == -1 : true;
+                },
+                //update_period: 5000,
+                // When all the posts are collected and displayed - this function is evoked
+                callback: function() {
+                    console.log('all posts are collected');
+                }
+            });
+        };
+
+        updateFeed();
+        $('#button-update').click(function() {
+            //first, get rid of old data/posts.
+            $('.social-feed-container').html('');
+
+            //then load new posts
+            updateFeed();
+        });
+
+    });
+
+        }(jQuery));
+      </script>
+    </div>
+    <% include board-footer %>
