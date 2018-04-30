@@ -95,7 +95,7 @@ router.post('/register', (req, res) => {
 
           }).save().then((newUser) => {
             console.log('new ages/auth/user created ' + newUser)
-            res.redirect("auth/login")
+            res.redirect("login")
           })
         }
       })
